@@ -35,6 +35,9 @@ print(payload_json)
 encoded_data = base64.b64encode(payload_json)
 print("Here is the encoded payload: " + encoded_data)
 
-#POST to the HTTP API
+#Connect the final URL and POST
 r = requests.post(url + '?data=' + encoded_data, headers = headers)
-print(r.text)
+if r.text == 1:
+    print("Success your POST has been sent to mixpanel!")
+else:
+    print("Mixpanel returned an error")
